@@ -1,0 +1,30 @@
+{
+    "C_Cpp.intelliSenseEngine": "default",
+    "idf.espIdfPathWin": "C:\\Users\\ptv\\esp\\v5.3\\esp-idf",
+    "idf.espAdfPathWin": "c:\\esp\\esp-adf",
+    "idf.openOcdConfigs": [
+        "board/esp32c6-bridge.cfg"
+    ],
+    "idf.portWin": "COM8",
+    "idf.toolsPathWin": "c:\\esp",
+    "idf.flashType": "UART",
+    "files.associations": {
+        "*.cps": "javascript",
+        "spi_master.h": "c",
+        "esp_wifi.h": "c",
+        "led_strip_cust.h": "c",
+        "esp_err.h": "c",
+        "esp_now.h": "c",
+        "touch.h": "c",
+        "i2s_stream.h": "c",
+        "ui.h": "c",
+        "lvgl.h": "c",
+        "fonts.h": "c",
+        "esp_netif.h": "c",
+        "audio_element.h": "c",
+        "aht21.h": "c",
+        "esp_log.h": "c",
+        "i2c_master.h": "c",
+        "ens160.h": "c"
+    }
+}
