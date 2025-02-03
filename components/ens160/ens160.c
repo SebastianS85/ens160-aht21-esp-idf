@@ -1,3 +1,15 @@
+/**
+ * @brief Read data from the ENS160 sensor over I2C.
+ *
+ * This function reads data from the ENS160 sensor at the specified register address.
+ * It uses the I2C master interface to communicate with the sensor.
+ *
+ * @param reg_addr The register address to read from.
+ * @param data Pointer to a buffer to store the read data.
+ * @param len The number of bytes to read.
+ * @return ESP_OK on success, otherwise an error code.
+ */
+esp_err_t ens160_read_data(uint8_t reg_addr, uint8_t *data, size_t len);
 #include <stdio.h>
 #include "ens160.h"
 #include "driver/i2c.h"
@@ -18,6 +30,17 @@ esp_err_t ens160_write_data(uint8_t reg_addr, uint8_t *data, size_t len) {
     return result;
 }
 
+/**
+ * Read data from the ENS160 sensor over I2C.
+ *
+ * This function reads data from the ENS160 sensor at the specified register address.
+ * It uses the I2C master interface to communicate with the sensor.
+ *
+ * @param reg_addr The register address to read from.
+ * @param data Pointer to a buffer to store the read data.
+ * @param len The number of bytes to read.
+ * @return ESP_OK on success, otherwise an error code.
+ */
 esp_err_t ens160_read_data(uint8_t reg_addr, uint8_t *data, size_t len) {
     i2c_cmd_handle_t cmd = i2c_cmd_link_create();
     i2c_master_start(cmd);
@@ -95,6 +118,42 @@ uint8_t get_ens160_aqi(){
 
 }
 
+/**
+ * @brief Get the TVOC (Total Volatile Organic Compounds) value from the ENS160 sensor.
+ *
+ * This function reads the TVOC data from the ENS160 sensor and returns the value. It also logs the TVOC value along with an air quality indicator based on the following ranges:
+ * - TVOC < 600 PPB: [Excellent]
+ * - 600 PPB <= TVOC < 800 PPB: [Good]
+ * - 800 PPB <= TVOC < 1000 PPB: [Moderate]
+ * - 1000 PPB <= TVOC < 1500 PPB: [Poor]
+ * - TVOC >= 1500 PPB: [Unhealthy]
+ *
+ * @return uint16_t The TVOC value in PPB (parts per billion).
+ */
+/**
+ * @brief Get the TVOC (Total Volatile Organic Compounds) value from the ENS160 sensor.
+ *
+ * This function reads the TVOC data from the ENS160 sensor and returns the value. It also logs the TVOC value along with an air quality indicator based on the following ranges:
+ * - TVOC < 600 PPB: [Excellent]
+ * - 600 PPB <= TVOC < 800 PPB: [Good]
+ * - 800 PPB <= TVOC < 1000 PPB: [Moderate]
+ * - 1000 PPB <= TVOC < 1500 PPB: [Poor]
+ * - TVOC >= 1500 PPB: [Unhealthy]
+ *
+ * @return uint16_t The TVOC value in PPB (parts per billion).
+ */
+/**
+ * @brief Get the TVOC (Total Volatile Organic Compounds) value from the ENS160 sensor.
+ *
+ * This function reads the TVOC data from the ENS160 sensor and returns the value. It also logs the TVOC value along with an air quality indicator based on the following ranges:
+ * - TVOC < 600 PPB: [Excellent]
+ * - 600 PPB <= TVOC < 800 PPB: [Good]
+ * - 800 PPB <= TVOC < 1000 PPB: [Moderate]
+ * - 1000 PPB <= TVOC < 1500 PPB: [Poor]
+ * - TVOC >= 1500 PPB: [Unhealthy]
+ *
+ * @return uint16_t The TVOC value in PPB (parts per billion).
+ */
 uint16_t get_ens160_tvoc(){
 
 
@@ -144,6 +203,19 @@ uint16_t get_ens160_eco2(){
 
 
 
+/**
+ * @brief Get the status of the ENS160 sensor.
+ *
+ * This function reads the status register of the ENS160 sensor and interprets the validity field.
+ * It logs the status to the ESP_LOG system and returns the validity value.
+ *
+ * @return uint8_t The validity value, which can be one of the following:
+ *         - 0: Normal operation
+ *         - 1: Warm-Up phase
+ *         - 2: Initial Start-Up phase
+ *         - 3: Invalid output
+ *         - Any other value: Unknown status
+ */
 uint8_t get_ens160_status(){
     uint8_t data[1];
     if (ens160_read_data(0x20, data, sizeof(data)) != ESP_OK) {
@@ -173,6 +245,12 @@ uint8_t get_ens160_status(){
     }
     return validity;
 }
+/**
+ * @brief Compensate temperature and humidity data for the ENS160 sensor.
+ *
+ * This function reads the temperature and humidity data from the AHT21 sensor, converts the temperature
+ * to the format expected by the ENS160 sensor, and writes the data to the ENS160 sensor.
+ */
 void compensate_temp_hum(void){
     aht21_data_t aht21_data = aht21_get_temp_hum();
     uint16_t temp = (uint16_t)(aht21_data.temperature + 273)*64 ;
@@ -185,6 +263,16 @@ void compensate_temp_hum(void){
     }
 
 }
+
+/**
+ * @brief Get sensor data from the ENS160 and AHT21 sensors.
+ *
+ * This function reads the temperature, humidity, air quality index (AQI), total volatile organic compounds (TVOC),
+ * and equivalent carbon dioxide (ECO2) from the ENS160 sensor, as well as the temperature and humidity from the
+ * AHT21 sensor. The sensor data is stored in the `sensor_data` struct and returned.
+ *
+ * @return ens160_data_t The sensor data.
+ */
 ens160_data_t get_sensor_data(void){
 
     aht21_data_t aht21_data = aht21_get_temp_hum();

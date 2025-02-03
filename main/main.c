@@ -5,9 +5,6 @@
 #include "ens160.h"
 
 
-    
-
-static const char *TAG = "en160_sensor";
 
 
 
@@ -19,6 +16,6 @@ void app_main(void) {
 
        
        get_sensor_data();
-        vTaskDelay(2000/ portTICK_PERIOD_MS);  // Wait 5 seconds between readings
+        vTaskDelay(2000/ portTICK_PERIOD_MS);  
     }
 }

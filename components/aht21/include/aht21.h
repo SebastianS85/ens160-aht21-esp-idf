@@ -1,6 +1,6 @@
 #ifndef AHT21_H
 #define AHT21_H
-#include "driver/i2c.h"
+#include "driver/i2c_master.h"
 #include "esp_log.h"
 
 #define ATH_I2C_ADDRESS 0x38 
