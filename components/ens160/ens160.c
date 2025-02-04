@@ -118,42 +118,7 @@ uint8_t get_ens160_aqi(){
 
 }
 
-/**
- * @brief Get the TVOC (Total Volatile Organic Compounds) value from the ENS160 sensor.
- *
- * This function reads the TVOC data from the ENS160 sensor and returns the value. It also logs the TVOC value along with an air quality indicator based on the following ranges:
- * - TVOC < 600 PPB: [Excellent]
- * - 600 PPB <= TVOC < 800 PPB: [Good]
- * - 800 PPB <= TVOC < 1000 PPB: [Moderate]
- * - 1000 PPB <= TVOC < 1500 PPB: [Poor]
- * - TVOC >= 1500 PPB: [Unhealthy]
- *
- * @return uint16_t The TVOC value in PPB (parts per billion).
- */
-/**
- * @brief Get the TVOC (Total Volatile Organic Compounds) value from the ENS160 sensor.
- *
- * This function reads the TVOC data from the ENS160 sensor and returns the value. It also logs the TVOC value along with an air quality indicator based on the following ranges:
- * - TVOC < 600 PPB: [Excellent]
- * - 600 PPB <= TVOC < 800 PPB: [Good]
- * - 800 PPB <= TVOC < 1000 PPB: [Moderate]
- * - 1000 PPB <= TVOC < 1500 PPB: [Poor]
- * - TVOC >= 1500 PPB: [Unhealthy]
- *
- * @return uint16_t The TVOC value in PPB (parts per billion).
- */
-/**
- * @brief Get the TVOC (Total Volatile Organic Compounds) value from the ENS160 sensor.
- *
- * This function reads the TVOC data from the ENS160 sensor and returns the value. It also logs the TVOC value along with an air quality indicator based on the following ranges:
- * - TVOC < 600 PPB: [Excellent]
- * - 600 PPB <= TVOC < 800 PPB: [Good]
- * - 800 PPB <= TVOC < 1000 PPB: [Moderate]
- * - 1000 PPB <= TVOC < 1500 PPB: [Poor]
- * - TVOC >= 1500 PPB: [Unhealthy]
- *
- * @return uint16_t The TVOC value in PPB (parts per billion).
- */
+ 
 uint16_t get_ens160_tvoc(){
 
 

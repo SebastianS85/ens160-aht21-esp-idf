@@ -14,7 +14,6 @@ void app_main(void) {
    
     while (true) {
 
-       
        get_sensor_data();
         vTaskDelay(2000/ portTICK_PERIOD_MS);  
     }
