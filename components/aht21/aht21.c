@@ -8,9 +8,7 @@
 static const char *TAG = "AHT21";
 
 
-esp_err_t aht21_write_data(uint8_t reg_addr, uint8_t *data, size_t len);
-esp_err_t aht21_read_data(uint8_t reg_addr, uint8_t *data, size_t len);
-aht21_stat_t aht_calibrate(void);
+
 
 void i2c_master_init(void)
 {

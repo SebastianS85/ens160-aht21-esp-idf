@@ -8,10 +8,11 @@
 #define DATA_AQI 0x21
 #define DATA_TVOC 0x22
 #define TEMP_IN 0x13
+#include "driver/i2c.h"
 
 
 static const uint8_t PART_ID_CMD[] = {0x33, 0x00};
-
+esp_err_t ens160_read_data(uint8_t reg_addr, uint8_t *data, size_t len);
 
 typedef struct {
 

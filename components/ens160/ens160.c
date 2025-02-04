@@ -9,7 +9,7 @@
  * @param len The number of bytes to read.
  * @return ESP_OK on success, otherwise an error code.
  */
-esp_err_t ens160_read_data(uint8_t reg_addr, uint8_t *data, size_t len);
+
 #include <stdio.h>
 #include "ens160.h"
 #include "driver/i2c.h"
